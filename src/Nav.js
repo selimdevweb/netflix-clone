@@ -1,8 +1,35 @@
-import React , {useState, useEffect}from 'react'
+import React , {useState, useEffect, useCallback}from 'react'
 import "./Nav.css"
 
 export default function Nav() {
-    const [show, setshow] = useState(false)
+
+    const [y, setYarl] = useState(false);
+    const [defil, setdefil] = useState(true)
+
+    const handleNavigation = useCallback(
+      e => {
+        const window = e.currentTarget;
+        if (y > window.scrollY) {
+          console.log("scrolling up",);
+          setdefil(true)
+        } else if (y < window.scrollY) {
+          console.log("scrolling down");
+          setdefil(false);
+        }
+        setYarl(window.scrollY);
+      }, [y]
+    );
+    
+    useEffect(() => {
+        setYarl(window.scrollY);
+      window.addEventListener("scroll", handleNavigation);
+    
+      return () => {
+        window.removeEventListener("scroll", handleNavigation);
+      };
+    }, [handleNavigation]);
+
+ /*    const [show, setshow] = useState(false)
     useEffect(() => {
       window.addEventListener("scroll", ()=>{
           if (window.scrollY >100) {
@@ -14,10 +41,10 @@ export default function Nav() {
       return () =>{
           window.removeEventListener("scroll")
       }
-    }, [])
+    }, []) */
 
     return (
-        <div className={`nav ${show && "nav__black"}`}>
+        <div className={defil ? "nav" : "nav__black"}>
             <img
             className="nav__logo" 
             src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png" 

@@ -25,7 +25,6 @@ useEffect(()=>{
 
 const opts = {
     height:"390",
-    width:"100%",
     playerVars: {
 
         autoplay : 1,
@@ -68,7 +67,9 @@ if (trailerUrl) {
                     ))}
                     
                 </div>
-              {trailerUrl && <YouTube videoId={trailerUrl} opts={opts}/>}  
+              <div className="video">
+              {trailerUrl && <YouTube videoId={trailerUrl} opts={opts}/>}
+                </div>  
         </div>
     )
 }
