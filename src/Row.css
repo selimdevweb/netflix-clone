@@ -1,0 +1,39 @@
+.row {
+    margin-left: 20px
+}
+.row_posters {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    padding: 10px;
+}
+/* agir sur le scroll barre dans n'import que l navigateur   */
+.row_posters::-webkit-scrollbar {
+   width: 5px;
+   height: 10px;
+}
+.row_posters::-webkit-scrollbar-track {
+   
+    height: 10px;
+    
+  }
+.row_posters::-webkit-scrollbar-thumb {
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    border: none;
+    
+  }
+.row_poster {
+    object-fit: contain;/*La propriété CSS object-fit définit la façon dont le contenu d'un élément remplacé (<img> ou <video> par exemple) doit s'adapter à son conteneur en utilisant sa largeur et sa hauteur.  */
+width: 100%;
+max-height: 100px;
+padding: 10px;
+transition:  transform 500ms;/* pour induquer le délais de transformation  */
+}
+.row_poster:hover{
+transform: scale(1.15);/* La propriété transform modifie l'espace de coordonnées utilisé pour la mise en forme visuelle. Grâce à cette propriété, il est possible de translater les éléments, de les tourner, d'appliquer des homothéties, de les distordre pour en changer la perspective. */
+}
+.row_posterLarge{
+    max-height: 250px;
+    
+}
